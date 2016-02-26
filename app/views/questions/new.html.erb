@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			
+			<h1>Pregunta</h1>
+
+			<%= form_for @question do |f| %>
+
+				<div class="form-group">
+					<%= f.text_field :title, class: "form-control input-lg", placeholder: "Escribe el titulo de la pregunta" %>
+				</div>
+
+				<div class="form-group">
+					<%= f.text_area :body, :rows => 15, class: "form-control input-lg", placeholder: "Escribe la descripcion de tu pregunta" %>
+				</div>
+
+				<div class="form-group">
+					<%= f.submit "Crear pregunta", class: "btn btn-primary btn-lg btn-block" %>
+				</div>
+
+
+
+
+
+			<% end %>
+
+			
+
+			
+		</div>
+	</div>
+</div>
