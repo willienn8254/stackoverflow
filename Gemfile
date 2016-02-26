@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'coffee-script-source'
+gem 'coffee-script-source', '1.8.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 
