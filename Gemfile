@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'coffee-script-source', '1.8.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
+gem 'annotate'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
