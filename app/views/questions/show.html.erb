@@ -1,13 +1,40 @@
 <div class="container">
 	
 	<div class="row">
+
 		
-		<div class= "col-sm-6 col-sm-offset-3">
 
 			<br>
-			<p ><%= @question.title %></p>
-				<p ><%= @question.body%></p>
+			<h2 ><%= @question.title %></h2>
+			<p ><%= @question.body%></p>
 			<br>
+
+
+			<h1>comentarios de la pregunta</h1>
+
+			
+			 
+
+			    <% @question.comments.each do |comment| %>
+
+					<p> <%= comment.body%></p>
+					<hr>
+				<%end%>
+
+
+
+						<%= form_for [@question, Comment.new] do |f| %>
+						  <div class="form-group">
+						    <%= f.text_area :body, class: "form-control", placeholder: "Escribe tu comentario"%>
+						  </div>
+
+						  <div class="actions text-right">
+						  	<%= f.submit "Comentar",  class: "btn btn-primary" %>
+						  </div>
+						<% end %>
+
+
+
 			
 			<h2>Respuestas</h2>
 			<br>
@@ -64,33 +91,7 @@
 
 
 			
-			<h1>comentarios de la pregunta</h1>
-
 			
-			 
-
-			    <% @question.comments.each do |comment| %>
-
-				<h2> <%= comment.body%></h2>
-				<%end%>
-
-					
-					
-
-				
-
-						<h2>New Comment</h2>
-
-
-						<%= form_for [@question, Comment.new] do |f| %>
-						  <p>
-						    <%= f.label :body%><br />
-						    <%= f.text_area :body %>
-						  </p>
-						  <p><%= f.submit "Submit" %></p>
-						<% end %>
-
-
 
 			  </div>
 			

@@ -20,9 +20,22 @@ def create
       @comment = @commentable.comments.create(comment_params)
      if @comment.save
 	     flash[:notice] = "Successfully created comment."
-         answer= Answer.find(params[:answer_id])
-         question= Question.find(answer.question_id)
-	      redirect_to question
+
+         if params[:answer_id]
+              answer= Answer.find(params[:answer_id])
+              question= Question.find(answer.question_id)
+    	        redirect_to question
+
+          elsif  params[:question_id]
+            question= Question.find(params[:question_id])
+            redirect_to question
+
+
+
+          end
+
+
+
 	  else
 	  	flash[:notice] = "malll."
 	    
@@ -31,6 +44,7 @@ def create
 	  end
 
   end
+
 
   private
 
