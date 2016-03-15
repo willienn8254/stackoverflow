@@ -1,103 +1,136 @@
 <div class="container">
+
+	<h2 ><%= @question.title %></h2>
+	<br>
 	
 	<div class="row">
 
 		
+			<div class="col-md-2">
 
-			<br>
-			<h2 ><%= @question.title %></h2>
-			<p ><%= @question.body%></p>
-			<br>
+					<p>Votos</p>
+
+			</div>
 
 
-			<h1>comentarios de la pregunta</h1>
+			<div class="col-md-10">
 
-			
-			 
 
-			    <% @question.comments.each do |comment| %>
+					<p ><%= @question.body%></p>
+					<br>
 
-					<p> <%= comment.body%></p>
-					<hr>
-				<%end%>
+
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Comentarios</h3>
+					  </div>
+					  <div class="panel-body">
+					    <% @question.comments.each do |comment| %>
+
+							<p> <%= comment.body%></p>
+							<hr>
+						<%end%>
+
+					  </div>
+					</div>
 
 
 
 						<%= form_for [@question, Comment.new] do |f| %>
-						  <div class="form-group">
-						    <%= f.text_area :body, class: "form-control", placeholder: "Escribe tu comentario"%>
-						  </div>
+								<div class="form-group">
+								  <%= f.text_area :body, class: "form-control", placeholder: "Escribe tu comentario"%>
+								</div>
 
-						  <div class="actions text-right">
-						  	<%= f.submit "Comentar",  class: "btn btn-primary" %>
-						  </div>
+								<div class="actions text-right">
+								 <%= f.submit "Comentar",  class: "btn btn-primary" %>
+								 </div>
 						<% end %>
 
 
+				</div>
+
+
+
+			 </div>
+
+
+
 
 			
-			<h2>Respuestas</h2>
-			<br>
-			<% @question.answers.each do |answer|%>
-			  <div class="panel panel-default">
-			    
-			    <div class="panel-body"><%= answer.body %></div>
+			<h3>Respuestas</h3>
+			<hr>
 
-			    <% answer.comments.each do |comment| %>
+		<div class="row">
 
-				<h2> <%= comment.body%></h2>
-				<%end%>
+			<div class="col-md-2">
 
-					
-					
+					<p>Votos</p>
 
-				
+			</div>
 
-						<h2>New Comment</h2>
+			<div class="col-md-10">
+
+						<% @question.answers.each do |answer|%>
+						  
+						    
+						   	<%= answer.body %>
+						   	<hr>
+
+						    <% answer.comments.each do |comment| %>
+
+							    <div class="panel panel-default">
+							      <div class="panel-heading">
+							        <h3 class="panel-title">Comentarios</h3>
+							      </div>
+							      <div class="panel-body">
+							        <%= comment.body%>
+							      </div>
+							    </div>
+
+							
+						<%end%>
+
+			
 
 
-						<%= form_for [answer, answer.comments.build] do |f| %>
+									<%= form_for [answer, answer.comments.build] do |f| %>
 
-						  <p>
-						    <%= f.label :body%><br />
-						    <%= f.text_area :body %>
-						  </p>
-						  <p><%= f.submit "Submit" %></p>
+										<div class="form-group">
+										  <%= f.text_area :body, class: "form-control", placeholder: "Escribe tu comentario"%>
+										</div>
+
+										<div class="actions text-right">
+										 <%= f.submit "Comentar",  class: "btn btn-primary" %>
+										 </div>
+									<% end %>
+
+
+
+
+
+						  
 						<% end %>
 
-
-
-
-
-			  </div>
-			<% end %>
-
-
-
-
-			<%= form_for [@question, @question.answers.build] do |f| %>
-			    <div class="form-group">
-			      <%= f.text_area :body, class: "form-control", placeholder: "Agregar respuesta" %>
-			    </div>
-
-			    <div class="actions text-right">
-			      <%= f.submit "responder", class: "btn btn-primary" %>
-			    </div>
-			  <% end %>
-
-		
-			</hr>
-			
-
-
+			</div>
 			
 			
-
-			  </div>
-			
-
-
-
 		</div>
-	</div>
+
+	   <div class="row">
+	   	<hr>
+
+	   	<%= form_for [@question, @question.answers.build] do |f| %>
+						    <div class="form-group">
+						      <%= f.text_area :body, class: "form-control", placeholder: "Agregar respuesta" %>
+						    </div>
+
+						    <div class="actions text-right">
+						      <%= f.submit "responder", class: "btn btn-primary" %>
+						    </div>
+						  <% end %>
+			</div>
+
+	   </div>
+			 
+			
 </div>
