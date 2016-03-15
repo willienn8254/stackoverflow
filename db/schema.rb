@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228021046) do
+ActiveRecord::Schema.define(version: 20160315110556) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "body"
@@ -64,8 +64,10 @@ ActiveRecord::Schema.define(version: 20160228021046) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "votable_id"
+    t.string   "votable_type"
   end
 
 end
