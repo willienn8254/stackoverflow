@@ -57,7 +57,7 @@
 
 
 			
-			<h3>Respuestas</h3>
+			<h3><%=@question.answers.length %> Respuesta(s)</h3>
 			<hr>
 
 		<div class="row">
@@ -76,19 +76,22 @@
 						   	<%= answer.body %>
 						   	<hr>
 
-						    <% answer.comments.each do |comment| %>
+						    
 
 							    <div class="panel panel-default">
 							      <div class="panel-heading">
 							        <h3 class="panel-title">Comentarios</h3>
 							      </div>
 							      <div class="panel-body">
-							        <%= comment.body%>
+							      	<% answer.comments.each do |comment| %>
+							        <p><%= comment.body%></p>
+							        <hr>
+							        <%end%>
 							      </div>
 							    </div>
 
 							
-						<%end%>
+					
 
 			
 
