@@ -17,6 +17,13 @@ class QuestionsController < ApplicationController
 
 		@questions=Question.all
 
+			if params[:search].present?
+
+				@questions = @questions.where("title LIKE ?", "%#{params[:search]}%")
+
+
+			end
+
 
 	end
 
