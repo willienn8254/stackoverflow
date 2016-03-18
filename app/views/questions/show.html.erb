@@ -79,15 +79,32 @@
 
 		<div class="row">
 
-			<div class="col-md-2">
-
-					<p>Votos</p>
-
-			</div>
-
-			<div class="col-md-10">
+		
 
 						<% @question.answers.each do |answer|%>
+
+						<div class="col-md-2">
+
+								<p>Votos</p>
+								<% if answer.voted_by? current_user %>
+
+								  <%= link_to answer_vote_path(answer, answer.votes.take), method: :delete, class: "product-upvote upvote-active" do %>
+								    <span class="upvote-arrow"></span>
+								    <span class="upvote-count"><%= answer.votes.count %></span>
+								  <% end %>
+								
+								<% else %>
+
+								<%= link_to answer_votes_path(answer), method: :post, class: "product-upvote" do %>
+								    <span class="upvote-arrow"></span>
+								    <span class="upvote-count"><%= answer.votes.count %></span>
+								  <% end %>
+
+								<%end%>
+
+						</div>
+
+						<div class="col-md-10">
 						  
 						    
 						   	<%= answer.body %>
@@ -129,9 +146,10 @@
 									<hr>
 
 						  
-						<% end %>
+						
 
-			</div>
+						</div>
+			<% end %>
 			
 			
 		</div>
