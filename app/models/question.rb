@@ -18,4 +18,8 @@ class Question < ActiveRecord::Base
 	has_many :votes, :as => :votable
 
 
+	def voted_by?(user)
+	  votes.exists?(user: user)
+	end
+
 end

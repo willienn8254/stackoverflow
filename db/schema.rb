@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315110556) do
+ActiveRecord::Schema.define(version: 20160315112659) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "body"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 20160315110556) do
     t.datetime "updated_at",   null: false
     t.integer  "votable_id"
     t.string   "votable_type"
+    t.integer  "user_id"
   end
+
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end
