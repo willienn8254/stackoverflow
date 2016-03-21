@@ -17,19 +17,19 @@
 				    <% @questions.each do |question| %>
 
 				    <div class="col-sm-12 col-md-2">
-				    	<p><%=question.votes.count %></p>
-				    	<p>Votos</p>
+				    	<p class="textsecond"><%=question.votes.count %></p>
+				    	<p class="principal">Votos</p>
 				    	
 				    </div >
 
 				    <div class="col-sm-12 col-md-2">
-				    	<p><%=question.answers.length %></p>
-				    	<p>Respuestas</p>
+				    	<p class="textsecond"><%=question.answers.length %></p>
+				    	<p class="principal">Respuestas</p>
 				    </div>
 
 				    <div class="col-sm-12 col-md-8">
-						<p class="quest"> <%=link_to question.title, question %></p>
-						<p> Publicado por <%= question.user.email %> hace <%= time_ago_in_words question.created_at %></p>
+						<p class="quest"> <%=link_to question.title, question , class: "quest" %></p>
+						<p class="principal"> Publicado por <%= question.user.email %> hace <%= time_ago_in_words question.created_at %></p>
 					</div>
 						
 						<hr>
