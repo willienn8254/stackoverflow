@@ -40,17 +40,28 @@
 
 					<p ><%= @question.body%></p>
 					<br>
-
-
+						
+					
 					<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">Comentarios</h3>
 					  </div>
-					  <div class="panel-body">
-					    <% @question.comments.each do |comment| %>
 
-							<p> <%= comment.body%></p>
-							<hr>
+					  <div class="panel-body">
+
+						<% if (@question.comments.length>0) %>
+
+						    <% @question.comments.each do |comment| %>
+								<p class="comments"> <%= comment.body%></p>
+								<span class="email">- <%= comment.user.email%> </span>
+								<span class="comments"> hace <%= time_ago_in_words comment.created_at %> </span>
+
+								<hr>
+							<%end%>
+						
+						<%else%>
+
+							<p class="comments"> No hay Comentarios </p>
 						<%end%>
 
 					  </div>
@@ -114,7 +125,9 @@
 						<div class="col-md-10">
 						  
 						    
-						   	<%= answer.body %>
+						   	<p><%= answer.body %></p>
+						   	<span class="email">- <%= answer.user.email%> </span>
+						   	<span class="comments"> hace <%= time_ago_in_words answer.created_at %> </span>
 						   	<hr>
 
 						    
@@ -124,10 +137,20 @@
 							        <h3 class="panel-title">Comentarios</h3>
 							      </div>
 							      <div class="panel-body">
-							      	<% answer.comments.each do |comment| %>
-							        <p><%= comment.body%></p>
-							        <hr>
+
+							      	<% if (answer.comments.length>0) %>
+								      	<% answer.comments.each do |comment| %>
+								        <p class="comments"><%= comment.body%></p>
+								        <span class="email">- <%= comment.user.email%> </span>
+								        <span class="comments"> hace <%= time_ago_in_words comment.created_at %> </span>
+								        <hr>
+							        	<%end%>
+
+							        <%else%>
+
+							        	<p class="comments"> No hay Comentarios </p>
 							        <%end%>
+
 							      </div>
 							    </div>
 
