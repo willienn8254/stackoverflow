@@ -1,12 +1,12 @@
 <div class="container">
 
-	<h2 ><%= @question.title %></h2>
+	<p class="question"><%= @question.title %></p>
 	<br>
 	
 	<div class="row">
 
 		
-			<div class="col-md-2">
+			<div class="col-md-2 center">
 
 					
 					<% if @question.voted_by? current_user %>
@@ -14,15 +14,19 @@
 					  <%= link_to question_vote_path(@question, @question.votes.take), method: :delete ,class: "vote" do %>
 					    
 					   <span class="glyphicon glyphicon-triangle-top votedown"></span>
-					   <span class="votedown"><%= @question.votes.count %></span>
+					   
+					   
 					  <% end %>
+					  <p> <%= @question.votes.count %></p>
 					
 					<% else %>
 
 					<%= link_to question_votes_path(@question), method: :post  ,class: "vote" do %>
 					    <span class="glyphicon glyphicon-triangle-top  voteup"></span>
-					    <span class="voteup"><%= @question.votes.count %></span>
+					   
 					  <% end %>
+					  <p> <%= @question.votes.count %></p>
+
 
 					<%end%>
 
@@ -84,22 +88,24 @@
 
 						<% @question.answers.each do |answer|%>
 
-						<div class="col-md-2">
+						<div class="col-md-2 center">
 
 								
 								<% if answer.voted_by? current_user %>
 
 								  <%= link_to answer_vote_path(answer, answer.votes.take), method: :delete, class: "vote" do %>
 								    <span class="glyphicon glyphicon-triangle-top  votedown"></span>
-								    <span class="votedown"><%= answer.votes.count %></span>
+								   
 								  <% end %>
+								  <p><%= answer.votes.count %></p>
 								
 								<% else %>
 
 								<%= link_to answer_votes_path(answer), method: :post, class: "vote" do %>
 								    <span class="glyphicon glyphicon-triangle-top  voteup"></span>
-								    <span class="voteup"><%= answer.votes.count %></span>
+								    
 								  <% end %>
+								  <p><%= answer.votes.count %></p>
 
 								<%end%>
 

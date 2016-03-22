@@ -11,6 +11,11 @@ body{
 background-color: #F8F8F8;
 }
 
+.center{
+  
+  text-align: center;
+}
+
 
 
 .principal{
@@ -25,6 +30,13 @@ color: #B0B0B0;
   font-size: 18px;
 }
 
+.question{
+
+font-size: 20px;
+font-weight: bold;
+  
+
+}
 
 .quest:hover {
   color: orange;
@@ -41,20 +53,23 @@ color: #B0B0B0;
   
   text-decoration: none !important;
   text-align: center;
-  
-
+ 
 
 .voteup{
   
-  display: block;
+  
   color:black;
+  font-size: 24px;
   
 }
 
 .votedown{
   
-  display: block;
+  
   color:orange;
+  font-size: 24px;
+
+
 }
 
 
