@@ -69,7 +69,7 @@
 
 
 
-						<%= form_for [@question, Comment.new] do |f| %>
+						<%= form_for [@question, @question.comments.build] do |f| %>
 								<div class="form-group">
 								  <%= f.text_area :body, class: "form-control", placeholder: "Escribe tu comentario"%>
 								</div>
@@ -92,6 +92,8 @@
 			
 			<h3><%=@question.answers.length %> Respuesta(s)</h3>
 			<hr>
+
+
 
 		<div class="row">
 
@@ -187,7 +189,11 @@
 	   <div class="row">
 	   	<hr>
 
+	   
+
 	   	<%= form_for [@question, @question.answers.build] do |f| %>
+
+
 						    <div class="form-group">
 						      <%= f.text_area :body, class: "form-control", placeholder: "Agregar respuesta" %>
 						    </div>

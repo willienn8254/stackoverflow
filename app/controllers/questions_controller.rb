@@ -56,6 +56,7 @@ class QuestionsController < ApplicationController
 
 		@question=Question.find(params[:id])
 		@comments=@question.comments
+		
 
 
 	end

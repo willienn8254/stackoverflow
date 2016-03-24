@@ -12,12 +12,22 @@
 
 class AnswersController < ApplicationController
 
+
+
 	
   def create
   question= Question.find(params[:question_id])
-  question.answers.create(answers_params)
+ answer= question.answers.create(answers_params)
 
-  redirect_to question
+ if answer.save
+
+  redirect_to question, notice:"La respuesta se ha publicado con exito"
+
+  else
+
+		 redirect_to question, alert: "El contenido de la respuesta no puede ser vacio."
+
+		end
 	end
 
 private
