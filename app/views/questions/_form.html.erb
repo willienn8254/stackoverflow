@@ -4,6 +4,22 @@
 			
 			<h1>Pregunta</h1>
 
+			<% if @question.errors.any? %>
+				<div class="alert alert-danger">
+					<ul>
+					    <% @question.errors.full_messages.each do |msg| %>
+					      <li><%= msg %></li>
+					    <% end %>
+					</ul>
+					
+
+				</div>
+
+
+
+
+			<%end%>
+
 			<%= form_for @question do |f| %>
 
 				<div class="form-group">
