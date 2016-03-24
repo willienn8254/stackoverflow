@@ -127,7 +127,7 @@
 						<div class="col-md-10">
 						  
 						    
-						   	<p><%= answer.body %></p>
+						   	<p><%=markdown (answer.body) %></p>
 						   	<span class="email">- <%= answer.user.email%> </span>
 						   	<span class="comments"> hace <%= time_ago_in_words answer.created_at %> </span>
 						   	<hr>
