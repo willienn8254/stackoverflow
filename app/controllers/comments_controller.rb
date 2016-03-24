@@ -14,16 +14,16 @@
 class CommentsController < ApplicationController
 
 
-def redir
+def routes
 
   if params[:answer_id]
               answer= Answer.find(params[:answer_id])
               question= Question.find(answer.question_id)
-              redirect_to question
+              return  question
 
           elsif  params[:question_id]
             question= Question.find(params[:question_id])
-            redirect_to question
+            return question
 
 
 
@@ -40,14 +40,14 @@ def create
      if @comment.save
 	     flash[:notice] = "El comentario ha sido publicado con exito."
 
-        redir
+        redirect_to routes
 
 
 
 	  else
 	  	flash[:alert] = "El comentario no puede ser vacio"
-      
-       redir
+
+      redirect_to routes
 	    
 
 	  end
