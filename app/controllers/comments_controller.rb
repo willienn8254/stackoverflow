@@ -14,31 +14,9 @@
 class CommentsController < ApplicationController
 
 
-def create
+def redir
 
-      @commentable = find_commentable
-      @comment = @commentable.comments.create(comment_params)
-     if @comment.save
-	     flash[:notice] = "El comentario ha sido publicado con exito."
-
-         if params[:answer_id]
-              answer= Answer.find(params[:answer_id])
-              question= Question.find(answer.question_id)
-    	        redirect_to question
-
-          elsif  params[:question_id]
-            question= Question.find(params[:question_id])
-            redirect_to question
-
-
-
-          end
-
-
-
-	  else
-	  	flash[:alert] = "El comentario no puede ser vacio"
-       if params[:answer_id]
+  if params[:answer_id]
               answer= Answer.find(params[:answer_id])
               question= Question.find(answer.question_id)
               redirect_to question
@@ -51,8 +29,26 @@ def create
 
           end
 
-	    
 
+end
+
+
+def create
+
+      @commentable = find_commentable
+      @comment = @commentable.comments.create(comment_params)
+     if @comment.save
+	     flash[:notice] = "El comentario ha sido publicado con exito."
+
+        redir
+
+
+
+	  else
+	  	flash[:alert] = "El comentario no puede ser vacio"
+      
+       redir
+	    
 
 	  end
 
