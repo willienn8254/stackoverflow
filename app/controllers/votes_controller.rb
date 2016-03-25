@@ -19,7 +19,7 @@ class VotesController < ApplicationController
 		@votable= find_votable
 		@vote = @votable.votes.create(user: current_user)
      		if @vote.save
-	     			flash[:notice] = "vote created comment."
+	     			flash[:notice] = "El voto se ha cargado correctamente"
 
          	if params[:answer_id]
               		answer= Answer.find(params[:answer_id])
@@ -37,7 +37,7 @@ class VotesController < ApplicationController
 
 
 			  else
-			  	flash[:notice] = "malll."
+			  	flash[:notice] = "El voto no se ha cargado"
 			    
 
 

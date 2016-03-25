@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
 
 		if @question.save
 
-			redirect_to questions_path, notice: "La pregunta fue publicada con exito"
+			redirect_to @question, notice: "La pregunta fue publicada con exito"
 
 		else
 
