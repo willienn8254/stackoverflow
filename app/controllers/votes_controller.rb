@@ -12,6 +12,8 @@
 
 class VotesController < ApplicationController
 
+		
+
 	def create
 
 		@votable= find_votable
