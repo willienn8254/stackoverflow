@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
 
 			if params[:search].present?
 
-				@questions = @questions.where("title LIKE ?", "%#{params[:search]}%")
+				@questions = @questions.where("title LIKE ? or body LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
 
 
 			end
